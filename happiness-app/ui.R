@@ -11,16 +11,20 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
+    tabsetPanel(
+        tabPanel("About", fluid = TRUE,
+            # Application title
+            titlePanel("World Happiness Report"),
 
-    # Application title
-    titlePanel("World Happiness Report"),
+            # Sidebar with a slider input for number of bins
 
-    # Sidebar with a slider input for number of bins
-
-        # Show a plot of the generated distribution
-        mainPanel(
+            # Show a plot of the generated distribution
+            mainPanel(
             plotOutput("dataPlot"),
             textOutput("message")
-        )
+            )
+        ),
+        tabPanel("World Map", fluid = TRUE),
+        tabPanel("Border Comparison", fluid = TRUE)
     )
-)
+))
