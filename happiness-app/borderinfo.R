@@ -57,9 +57,31 @@ bordering_plot <- function(country, factor){
   sort(countries)
   countries <- c(country, countries)
   temp <- filter(happiness_data, Country.name %in% countries)
-  p <- ggplot(temp, aes(x=Country.name, y=!!sym_factor)) +
-    geom_bar(stat="identity")
+  p <- ggplot(temp, aes(x=Country.name, y=!!sym_factor, fill=Country.name)) +
+    geom_bar(stat="identity") + 
+    theme(axis.text.x = element_text(angle = 90), legend.position = "none") +
+    labs(title = paste0("Comparing the ", factor, " of ", country, " and its
+    surrounding countries"))
   return(p)
 }
 
-print(bordering_plot("United States", "Ladder.score"))
+b_get_factor_x <- function(factor) {
+  res <- switch(factor,
+                "Ladder.score" = "Happiness Index",
+                "Logged.GDP.per.capita" = "GDP Per Capita")
+                
+         
+}
+
+b_get_text <- function(country, factor) {
+  
+}
+
+b_get_title <- function(country, factor) {
+  
+}
+
+b_get_desc <- function(country, factor) {
+  
+}
+

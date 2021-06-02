@@ -8,6 +8,9 @@
 #
 
 library(shiny)
+countries <- read.csv("data/world-happiness-report-2021.csv") %>%
+    pull(1)
+sort(countries)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -25,8 +28,28 @@ shinyUI(fluidPage(
             )
         ),
         tabPanel("World Map", fluid = TRUE),
-        tabPanel("Border Comparison", fluid = TRUE
-                 
-                 )
+        tabPanel("Border Comparison", fluid = TRUE,
+            titlePanel("Comparing the Happiness of Bordering Countries"),
+            sidebarLayout(
+                sidebarPanel(
+                    selectInput("country_border", "Select a country:",
+                                 choices = countries),
+                    radioButtons("factor_border", "Select a happiness factor:",
+                                 choices = c("Overall Happiness Index"=
+                                     "Ladder.score",
+                                 "GDP Per Capita"="Logged.GDP.per.capita",
+                                 "Social Support"="Social.support",
+                                 "Life Expectancy"="Healthy.life.expectancy",
+                                 "Freedom to Make Life Choices"=
+                                     "Freedom.to.make.life.choices",
+                                 "Generosity"="Generosity",
+                                 "Perceptions of Corruption"=
+                                     "Perceptions.of.corruption"))
+                ),
+                mainPanel(
+                    plotOutput("borderPlot")
+                )
+            )
+        )
     )
 ))
