@@ -85,3 +85,9 @@ b_get_desc <- function(country, factor) {
   
 }
 
+b_get_region <- function(country) {
+  temp <- filter(happiness_data, Country.name==!!country) %>%
+    pull(Regional.indicator)
+  return(temp)
+}
+

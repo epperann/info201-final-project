@@ -35,4 +35,7 @@ shinyServer(function(input, output) {
     })
     output$borderPlot <- renderPlot({
         bordering_plot(input$country_border, input$factor_border)})
+    
+    output$region <- renderText({b_get_region(input$country_border)})
+    
 })
