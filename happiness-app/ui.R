@@ -25,6 +25,8 @@ shinyUI(fluidPage(
             )
         ),
         tabPanel("World Map", fluid = TRUE),
-        tabPanel("Border Comparison", fluid = TRUE)
+        tabPanel("Border Comparison", fluid = TRUE
+                 
+                 )
     )
 ))
