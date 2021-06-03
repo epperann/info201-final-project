@@ -37,7 +37,36 @@ shinyUI(fluidPage(
             p("\n")
             )
         ),
-        tabPanel("World Map", fluid = TRUE),
+        tabPanel("World Map", fluid = TRUE,
+            titlePanel("Ranking the Happiness of Particpating Countries"),
+            p("Select one of the six happiness report
+              factors. The plot below will update with a map of the world that 
+              is colored dependent on each country's rank for that factor
+              Using this visualization, we can see how certain factors
+              are important to the overall score and which factors have 
+              a stronger correlation to a happier country. Countries that are red
+              did not participate in the Gallup Poll."),
+            sidebarLayout(
+                sidebarPanel(
+                    radioButtons("mapType",
+                                 "Rank Countries By: ",
+                                 c("Happiness Score" = "Ladder.score.rank",
+                                   "GDP per Capita" = "Logged.GDP.per.capita.rank",
+                                   "Life Expectancy" = "Healthy.life.expectancy.rank",
+                                   "Social Support" = "Social.support.rank",
+                                   "Freedom to make Choices" = "Freedom.to.make.life.choices.rank",
+                                   "Generosity" = "Generosity.rank",
+                                   "Perceptions of Corruption" = "Perceptions.of.corruption.rank"
+                                 )),
+                    tableOutput("rankTable")
+                ),
+                mainPanel(
+                    plotOutput("rankPlot")
+                    
+                )
+            )
+                 
+        ),
         tabPanel("Border Comparison", fluid = TRUE,
             titlePanel("Comparing the Happiness of Bordering Countries"),
             p("Select a country and then one of the seven happiness report
