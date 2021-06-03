@@ -76,7 +76,6 @@ shinyServer(function(input, output) {
                    "Freedom to make Choices" = "Freedom.to.make.life.choices.rank"
                 ))
         })
-    
 
     output$dataPlot <- renderPlot({
         ggplot(map_rank, aes(long, lat, group = group, fill = get(input$mapType))) + #fill based on rank in each factor
@@ -86,7 +85,6 @@ shinyServer(function(input, output) {
             labs(title = "World Map, Ranked by Input",
             x = "Longitude",
             y = "Latitude")
-        
     })
 })
 
