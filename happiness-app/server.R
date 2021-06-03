@@ -18,12 +18,14 @@ shinyServer(function(input, output) {
 
     
     output$message <- renderText({ 
-        description <- "The data we are analyzing is the world happiness report from 2021. 
+        description <- "The data we are analyzing is the World Happiness Report from 2021. The data is pulled from the Gallup World Poll,
+        Lloyd's Register Foundation and the Institute of Global Health Innovation. The data set was taken from Kaggle.
             The data set uses factors such as GDP, social support, life expectancy, freedom, and corruption to 
-            determine the happiness of a country’s citizens. Also, they use their own ladder score. 
+            determine the happiness of a country’s citizens. In addition, each country use their own ladder score. 
             This variable is meant to be representative of how easy it is for one to improve one’s own life. 
             A country with a high ladder score makes it easier for citizens to advance themselves, 
-            and lower scoring countries do the opposite."
+            and lower scoring countries do the opposite. This project aims to look at how these different factors come together
+        in various ways to reflect the happiness on a global scale."
         })
     
     output$dataPlot <- renderPlot({

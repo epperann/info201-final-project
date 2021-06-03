@@ -6,7 +6,7 @@
 #
 #    http://shiny.rstudio.com/
 #
-
+library(dplyr)
 library(shiny)
 countries <- read.csv("data/world-happiness-report-2021.csv") %>%
     pull(1)
@@ -58,6 +58,28 @@ shinyUI(fluidPage(
                     plotOutput("borderPlot")
                 )
             )
-        )
+        ),
+        tabPanel("Conclusion", fluid = TRUE,
+            titlePanel("Conclusions"),
+            mainPanel(
+                HTML(
+                    paste(
+                        p("A notable insight that we found relates to countries' GDP per capita and their overall happiness index. Across the world's countries, 
+                        there is no correlation between GDP and happiness, showing that other factors were much more important in the determination of happiness. GDP
+                        signifies economic output per person and is the country's overall GDP divided by its population. Countries with a high GDP are often developed 
+                        and industrial or small and rich and countries with a low GDP are usually developing nations that have a slow pace in terms of economic growth."),'<br/>',
+                        p("Here is a table showing the GDP compared to the happiness index for a few selected countries:"),'<br/>',
+                        p("There are broad implications for this insight for people. GDP in and of itself does not represent the other factors that we had examined, 
+                          such as social support, freedom to make choices and generosity. In fact, countries that have a high GDP do not necessarily report a high
+                          overall happiness index. Important components that contribute to the wellbeing of people include leisure time, healthcare, income equality
+                          and a lowered perception of corruption. This shows that countries should strive to increase and improve social factors rather than 
+                          the economic output per person, while also making sure that economic growth occurs more uniformly across the population than very few people."),'<br/>',
+                        p("The quality of the data set was reasonably high and included uniform data for each country. The data set comes from an initiative
+                          by the United Nations")
+                    )
+                )
+            )
+            
+            )
     )
 ))
