@@ -22,13 +22,19 @@ shinyUI(fluidPage(
         tabPanel("About", fluid = TRUE,
             # Application title
             titlePanel("World Happiness Report"),
-
-            # Sidebar with a slider input for number of bins
-
+            
             # Show a plot of the generated distribution
             mainPanel(
+            strong("Created by Annika Epperly, John Duffy, and Mahathi Allepally"),
             plotOutput("dataPlot"),
-            textOutput("message")
+            h4("Overview:"),
+            textOutput("message"),
+            h4("More Info:"),
+            a("2021 World Happiness Report", href="https://worldhappiness.report/ed/2021/"),
+            p("\n"),
+            a("Kaggle Dataset used for this app",
+              href="https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021"),
+            p("\n")
             )
         ),
         tabPanel("World Map", fluid = TRUE),

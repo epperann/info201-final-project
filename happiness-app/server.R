@@ -28,14 +28,20 @@ shinyServer(function(input, output) {
 
     
     output$message <- renderText({ 
-        description <- "The data we are analyzing is the World Happiness Report from 2021. The data is pulled from the Gallup World Poll,
-        Lloyd's Register Foundation and the Institute of Global Health Innovation. The data set was taken from Kaggle.
-            The data set uses factors such as GDP, social support, life expectancy, freedom, and corruption to 
-            determine the happiness of a country’s citizens. In addition, each country use their own ladder score. 
-            This variable is meant to be representative of how easy it is for one to improve one’s own life and therefore, happiness index. 
-            A country with a high ladder score makes it easier for citizens to advance themselves, 
-            and lower scoring countries do the opposite. This project aims to look at how these different factors come together
-        in various ways to reflect the happiness on a global scale."
+        description <- "The data we are analyzing is the World Happiness Report
+        from 2021. The data is pulled from the Gallup World Poll, Lloyd's Register 
+        Foundation and the Institute of Global Health Innovation. The data set 
+        was taken from Kaggle. The data set uses factors such as GDP, social support, 
+        life expectancy, freedom, and corruption to determine the happiness of a 
+        country’s citizens. In addition, each country use their own ladder 
+        score. This variable is meant to be representative of how easy it is for 
+        one to improve one’s own life and therefore, happiness index. A 
+        country with a high ladder score makes it easier for citizens to advance 
+        themselves, and lower scoring countries do the opposite. This project 
+        aims to look at how these different factors come together in various 
+        ways to reflect the happiness on a global scale. In doing so, we hope to 
+        emphasize the aspects of a nation's environment that contribute the most 
+        to general happiness in order to promote change."
         })
     
     output$dataPlot <- renderPlot({
