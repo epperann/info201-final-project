@@ -65,6 +65,7 @@ bordering_plot <- function(country, factor){
   return(p)
 }
 
+## Formats the y axis label properly
 b_get_factor_y <- function(factor) {
   res <- switch(factor,
                 "Ladder.score" = "Happiness Index (Ability to Progress)",
@@ -78,10 +79,7 @@ b_get_factor_y <- function(factor) {
   return(res)       
 }
 
-b_get_desc <- function(country, factor) {
-  
-}
-
+## Returns the region in which the intial country is locatedS
 b_get_region <- function(country) {
   temp <- filter(happiness_data, Country.name==!!country) %>%
     pull(Regional.indicator)

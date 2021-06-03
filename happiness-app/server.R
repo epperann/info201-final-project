@@ -2,10 +2,6 @@
 # This is the server logic of a Shiny web application. You can run the
 # application by clicking 'Run App' above.
 #
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
 
 library(shiny)
 library(ggplot2)
@@ -26,7 +22,7 @@ gdpHappy <- data_frame(Name, Happiness, GDP)
 # Define server logic required to draw a map
 shinyServer(function(input, output) {
 
-    
+    ## About Page Description
     output$message <- renderText({ 
         description <- "The data we are analyzing is the World Happiness Report
         from 2021. The data is pulled from the Gallup World Poll, Lloyd's Register 
@@ -44,16 +40,18 @@ shinyServer(function(input, output) {
         to general happiness in order to promote change."
         })
     
+    ## About Page Plot
     output$dataPlot <- renderPlot({
         ggplot(map_data("world"), aes(long, lat, group = group)) + 
             geom_polygon(col = "black", size = .1, fill = "white") +
             coord_quickmap()
-    
-
     })
+    
+    ## Border Tab Plot
     output$borderPlot <- renderPlot({
         bordering_plot(input$country_border, input$factor_border)})
     
+    ## Border Tab region data
     output$region <- renderText({b_get_region(input$country_border)})
     
 
@@ -62,7 +60,8 @@ shinyServer(function(input, output) {
             kbl() %>% 
             kable_styling()
     }
-
+    
+    ## Factor Tab Table
     output$factor_table <- render_gt(build_factor_table(input$bracket, 
                                                         input$factor_t))
     

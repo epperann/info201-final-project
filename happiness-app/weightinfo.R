@@ -1,3 +1,5 @@
+## This file handles data for the Impact by Factor tab of the application
+
 library(dplyr)
 library(ggplot2)
 library(gt)
@@ -9,9 +11,13 @@ colnames(happiness_data)[1] <- "Country.name"
 ## countries ranked by the given factor
 build_factor_table <- function(option, factor){
   y <- -1
+  
+  ## Corruption is ranked differently than other factors
   if(factor=="Perceptions.of.corruption"){
     y <- 1
   }
+  
+  ## Selection based on bracket
   if(option=="Top 10") {
     x <- y*-10
   } else {

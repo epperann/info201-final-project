@@ -2,10 +2,6 @@
 # This is the user-interface definition of a Shiny web application. You can
 # run the application by clicking 'Run App' above.
 #
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
 
 library(dplyr)
 library(shiny)
@@ -16,14 +12,14 @@ countries <- read.csv("data/world-happiness-report-2021.csv") %>%
 countries <- sort(countries)
 
 
-# Define UI for application that draws a histogram
+# Define UI for the application
 shinyUI(fluidPage(
     tabsetPanel(
         tabPanel("About", fluid = TRUE,
             # Application title
             titlePanel("World Happiness Report"),
             
-            # Show a plot of the generated distribution
+            # Overview Info and Map
             mainPanel(
             strong("Created by Annika Epperly, John Duffy, and Mahathi Allepally"),
             plotOutput("dataPlot"),
@@ -37,7 +33,11 @@ shinyUI(fluidPage(
             p("\n")
             )
         ),
+        
+        ## Map of happiness distribution
         tabPanel("World Map", fluid = TRUE),
+        
+        ## Chart of data for countries and their borders
         tabPanel("Border Comparison", fluid = TRUE,
             titlePanel("Comparing the Happiness of Bordering Countries"),
             p("Select a country and then one of the seven happiness report
@@ -69,6 +69,8 @@ shinyUI(fluidPage(
                 )
             )
         ),
+        
+        ## Table showing rankings by factor
         tabPanel("Impact by Factor",
                  titlePanel("Examining the Impact of Each Factor on
                                 the Total Happiness Score"),
@@ -103,6 +105,8 @@ shinyUI(fluidPage(
                      )
                  )
         ),
+        
+        ## Data analysis
         tabPanel("Conclusion", fluid = TRUE,
                  titlePanel("Conclusions"),
                  mainPanel(
