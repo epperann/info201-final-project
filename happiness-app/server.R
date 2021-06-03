@@ -10,6 +10,7 @@ library(dplyr)
 
 source("borderinfo.R")
 source("weightinfo.R")
+source("rankinginfo.R")
 
 data <- read.csv("data/world-happiness-report-2021.csv")
 
@@ -40,11 +41,20 @@ shinyServer(function(input, output) {
         to general happiness in order to promote change."
         })
     
+
     ## About Page Plot
     output$dataPlot <- renderPlot({
         ggplot(map_data("world"), aes(long, lat, group = group)) + 
             geom_polygon(col = "black", size = .1, fill = "white") +
             coord_quickmap()
+    })
+    
+    output$rankPlot <- renderPlot({
+        rankingPlot(input$mapType)
+    })
+    
+    output$rankTable <- renderTable({
+        rankingTable(input$mapType)
     })
     
     ## Border Tab Plot
