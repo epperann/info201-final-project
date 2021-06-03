@@ -65,9 +65,9 @@ shinyUI(fluidPage(
                 HTML(
                     paste(
                         p("A notable insight that we found relates to countries' GDP per capita and their overall happiness index. Across the world's countries, 
-                        there is no correlation between GDP and happiness, showing that other factors were much more important in the determination of happiness. GDP
-                        signifies economic output per person and is the country's overall GDP divided by its population. Countries with a high GDP are often developed 
-                        and industrial or small and rich and countries with a low GDP are usually developing nations that have a slow pace in terms of economic growth."),'<br/>',
+                          there is no correlation between GDP and happiness, showing that other factors were much more important in the determination of happiness. 
+                          Countries with a high GDP are often developed and industrial or small and rich and countries with a low GDP are usually developing nations 
+                          that have a slow pace in terms of economic growth."),'<br/>',
                         p("Here is a table showing the GDP compared to the happiness index for a few selected countries:"),'<br/>',
                         p("There are broad implications for this insight for people. GDP in and of itself does not represent the other factors that we had examined, 
                           such as social support, freedom to make choices and generosity. In fact, countries that have a high GDP do not necessarily report a high
@@ -75,7 +75,13 @@ shinyUI(fluidPage(
                           and a lowered perception of corruption. This shows that countries should strive to increase and improve social factors rather than 
                           the economic output per person, while also making sure that economic growth occurs more uniformly across the population than very few people."),'<br/>',
                         p("The quality of the data set was reasonably high and included uniform data for each country. The data set comes from an initiative
-                          by the United Nations")
+                          by the United Nations, which is generally a reliable source. There is no obvious source of bias in this set, but there is some ambiguity
+                          as to how scores for elements such as social support and generosity were calculated. These scores are affected by the survey techniques
+                          that were used to poll people and additionally there is no insight on which populations in these countries were able to be surveyed.
+                          Certain population groups do not stand to be harmed by the data set, but rather ignored."),'<br/>',
+                        p("Potential further advancements for this project include taking a closer look at the spurious relationships between happiness and the various 
+                          factors in the data set by using statistics to assess the impact of each of the factors on the overall happiness index. There is 
+                          also room to look at conflict and how that affects happiness for each country.")
                     )
                 )
             )
