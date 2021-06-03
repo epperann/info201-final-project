@@ -4,7 +4,7 @@
 library(dplyr)
 library(ggplot2)
 
-borders_data <-read.csv("data/GEODATASOURCE-COUNTRY-BORDERS.csv")
+borders_data <-read.csv("data/geosourcedata-country-borders.csv")
 happiness_data <- read.csv("data/world-happiness-report-2021.csv")
 colnames(happiness_data)[1] <- "Country.name"
 
