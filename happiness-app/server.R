@@ -13,6 +13,7 @@ library(kableExtra)
 library(dplyr)
 
 source("borderinfo.R")
+source("weightinfo.R")
 
 data <- read.csv("data/world-happiness-report-2021.csv")
 
@@ -49,11 +50,16 @@ shinyServer(function(input, output) {
     
     output$region <- renderText({b_get_region(input$country_border)})
     
+<<<<<<< HEAD
     output$concTbl <- function(){
         gdpHappy %>% 
             kbl() %>% 
             kable_styling()
     }
     
+=======
+    output$factor_table <- render_gt(build_factor_table(input$bracket, 
+                                                        input$factor_t))
+>>>>>>> 1a655cbbac582875932e314694700dbf006b5520
     
 })

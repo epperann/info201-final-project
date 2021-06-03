@@ -61,24 +61,21 @@ bordering_plot <- function(country, factor){
     geom_bar(stat="identity") + 
     theme(axis.text.x = element_text(angle = 90), legend.position = "none") +
     labs(title = paste0("Comparing the ", factor, " of ", country, " and its
-    surrounding countries"))
+    surrounding countries"), x= "Country Name", y = b_get_factor_y(factor))
   return(p)
 }
 
-b_get_factor_x <- function(factor) {
+b_get_factor_y <- function(factor) {
   res <- switch(factor,
-                "Ladder.score" = "Happiness Index",
-                "Logged.GDP.per.capita" = "GDP Per Capita")
+                "Ladder.score" = "Happiness Index (Ability to Progress)",
+                "Logged.GDP.per.capita" = "GDP Per Capita",
+                "Social.support" = "Social Support",
+                "Healthy.life.expectancy" = "Average Life Expectancy (yrs)",
+                "Freedom.to.make.life.choices" = "Freedom of Choice", 
+                "Generosity" = "Generosity Score",
+                "Perceptions.of.corruption" = "Instance of Perceived Corruption")
                 
-         
-}
-
-b_get_text <- function(country, factor) {
-  
-}
-
-b_get_title <- function(country, factor) {
-  
+  return(res)       
 }
 
 b_get_desc <- function(country, factor) {

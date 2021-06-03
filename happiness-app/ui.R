@@ -9,7 +9,11 @@
 
 library(dplyr)
 library(shiny)
+<<<<<<< HEAD
 
+=======
+library(gt)
+>>>>>>> 1a655cbbac582875932e314694700dbf006b5520
 countries <- read.csv("data/world-happiness-report-2021.csv") %>%
     pull(1)
 countries <- sort(countries)
@@ -62,6 +66,7 @@ shinyUI(fluidPage(
                 )
             )
         ),
+<<<<<<< HEAD
         tabPanel("Conclusion", fluid = TRUE,
             titlePanel("Conclusions"),
             mainPanel(
@@ -97,5 +102,41 @@ shinyUI(fluidPage(
             )
             
             )
+=======
+        tabPanel("Impact by Factor",
+                 titlePanel("Examining the Impact of Each Factor on
+                                the Total Happiness Score"),
+                 p("Select a bracket, and then select one of the six happiness
+                   factors to view the country ranking. This visualization 
+                   will show us how much each factor impacts the overall 
+                   happiness score by showing the rankings of each factor and
+                   how much it contributes to the score compared to the overall
+                   score and ranking. In the table below, the Contribution to 
+                   Happiness Score represents the assessed number of points each
+                   country gets added to the baseline Dystopia happiness score 
+                   based on the results of each factor. All factors except
+                   for perceptions of corruption are ranked from highest score
+                   to lowest score. In the case of perceptions of corruption, 
+                   a higher score translates to a lower happiness score."),
+                 sidebarLayout(
+                     sidebarPanel(
+                         radioButtons("bracket", "Select a range:",
+                                      choices = c("Top 10", "Bottom 10")),
+                         radioButtons("factor_t", "Select a happiness factor:",
+                                      choices = c("GDP Per Capita"="Logged.GDP.per.capita",
+                                                  "Social Support"="Social.support",
+                                                  "Life Expectancy"="Healthy.life.expectancy",
+                                                  "Freedom to Make Life Choices"=
+                                                      "Freedom.to.make.life.choices",
+                                                  "Generosity"="Generosity",
+                                                  "Perceptions of Corruption"=
+                                                      "Perceptions.of.corruption"))
+                     ),
+                     mainPanel(
+                         gt_output("factor_table")
+                     )
+                 )
+        )
+>>>>>>> 1a655cbbac582875932e314694700dbf006b5520
     )
 ))
