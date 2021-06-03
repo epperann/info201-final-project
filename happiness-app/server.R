@@ -10,6 +10,7 @@
 library(shiny)
 library(ggplot2)
 source("borderinfo.R")
+source("weightinfo.R")
 
 data <- read.csv("data/world-happiness-report-2021.csv")
 
@@ -37,5 +38,8 @@ shinyServer(function(input, output) {
         bordering_plot(input$country_border, input$factor_border)})
     
     output$region <- renderText({b_get_region(input$country_border)})
+    
+    output$factor_table <- render_gt(build_factor_table(input$bracket, 
+                                                        input$factor_t))
     
 })
