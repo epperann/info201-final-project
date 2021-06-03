@@ -5,9 +5,9 @@ account: epperann
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 4225050
-bundleId: 4674679
+bundleId: 4674809
 url: https://epperann.shinyapps.io/happiness-app/
-when: 1622751234.5331
-lastSyncTime: 1622751234.5331
+when: 1622753267.7887
+lastSyncTime: 1622753267.7887
 asMultiple: FALSE
 asStatic: FALSE

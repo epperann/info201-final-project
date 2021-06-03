@@ -5,6 +5,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(stringr)
+library(maps)
 
 
 data <- read.csv("data/world-happiness-report-2021.csv")

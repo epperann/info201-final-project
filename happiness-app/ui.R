@@ -6,6 +6,7 @@
 library(dplyr)
 library(shiny)
 library(gt)
+library(maps)
 
 countries <- read.csv("data/world-happiness-report-2021.csv") %>%
     pull(1)

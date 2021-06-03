@@ -7,6 +7,7 @@ library(shiny)
 library(ggplot2)
 library(kableExtra)
 library(dplyr)
+library(maps)
 
 source("borderinfo.R")
 source("weightinfo.R")
