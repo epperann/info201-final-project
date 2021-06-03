@@ -20,11 +20,23 @@ shinyUI(fluidPage(
 
             # Show a plot of the generated distribution
             mainPanel(
-            plotOutput("dataPlot"),
             textOutput("message")
             )
         ),
-        tabPanel("World Map", fluid = TRUE),
+        tabPanel("World Map", fluid = TRUE,
+            sidebarLayout(
+                sidebarPanel(
+                   uiOutput("mapButton")
+                 
+                ),
+            
+            mainPanel(
+            plotOutput("dataPlot"),
+            
+            tableOutput("dataTable")
+           ) ) ),
+        
         tabPanel("Border Comparison", fluid = TRUE)
     )
 ))
+
