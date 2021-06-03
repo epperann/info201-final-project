@@ -9,9 +9,18 @@
 
 library(shiny)
 library(ggplot2)
+library(kableExtra)
+library(dplyr)
+
 source("borderinfo.R")
 
 data <- read.csv("data/world-happiness-report-2021.csv")
+
+Name <- c("Botswana", "United States", "Bulgaria", "Italy", "Costa Rica")
+Happiness <- c("3.467", "6.951", "5.266", "6.483", "7.069")
+GDP <- c("9.782", "11.023", "10.016", "10.623", "9.880")
+gdpHappy <- data_frame(Name, Happiness, GDP)
+
 
 # Define server logic required to draw a map
 shinyServer(function(input, output) {
@@ -22,7 +31,7 @@ shinyServer(function(input, output) {
         Lloyd's Register Foundation and the Institute of Global Health Innovation. The data set was taken from Kaggle.
             The data set uses factors such as GDP, social support, life expectancy, freedom, and corruption to 
             determine the happiness of a country’s citizens. In addition, each country use their own ladder score. 
-            This variable is meant to be representative of how easy it is for one to improve one’s own life. 
+            This variable is meant to be representative of how easy it is for one to improve one’s own life and therefore, happiness index. 
             A country with a high ladder score makes it easier for citizens to advance themselves, 
             and lower scoring countries do the opposite. This project aims to look at how these different factors come together
         in various ways to reflect the happiness on a global scale."
@@ -39,5 +48,12 @@ shinyServer(function(input, output) {
         bordering_plot(input$country_border, input$factor_border)})
     
     output$region <- renderText({b_get_region(input$country_border)})
+    
+    output$concTbl <- function(){
+        gdpHappy %>% 
+            kbl() %>% 
+            kable_styling()
+    }
+    
     
 })

@@ -6,11 +6,14 @@
 #
 #    http://shiny.rstudio.com/
 #
+
 library(dplyr)
 library(shiny)
+
 countries <- read.csv("data/world-happiness-report-2021.csv") %>%
     pull(1)
 countries <- sort(countries)
+
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -65,10 +68,16 @@ shinyUI(fluidPage(
                 HTML(
                     paste(
                         p("A notable insight that we found relates to countries' GDP per capita and their overall happiness index. Across the world's countries, 
-                          there is no correlation between GDP and happiness, showing that other factors were much more important in the determination of happiness. 
+                          there is not a strong correlation between GDP and happiness, showing that other factors were much more important in the determination of happiness. 
                           Countries with a high GDP are often developed and industrial or small and rich and countries with a low GDP are usually developing nations 
                           that have a slow pace in terms of economic growth."),'<br/>',
-                        p("Here is a table showing the GDP compared to the happiness index for a few selected countries:"),'<br/>',
+                        p("Here is a table showing the GDP compared to the happiness index for a few selected countries:"),'<br/>'
+                    )
+                ),
+                tableOutput("concTbl"),
+                
+                HTML(
+                    paste(
                         p("There are broad implications for this insight for people. GDP in and of itself does not represent the other factors that we had examined, 
                           such as social support, freedom to make choices and generosity. In fact, countries that have a high GDP do not necessarily report a high
                           overall happiness index. Important components that contribute to the wellbeing of people include leisure time, healthcare, income equality
@@ -84,6 +93,7 @@ shinyUI(fluidPage(
                           also room to look at conflict and how that affects happiness for each country.")
                     )
                 )
+                
             )
             
             )
