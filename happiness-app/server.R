@@ -58,6 +58,11 @@ shinyServer(function(input, output) {
         rankingTable(input$mapType)
     })
     
+    output$bottomTable <- renderTable({
+        bottomTable(input$mapType)
+    })
+    
+    
     ## Border Tab Plot
     output$borderPlot <- renderPlot({
         bordering_plot(input$country_border, input$factor_border)})

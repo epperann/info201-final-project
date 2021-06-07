@@ -43,25 +43,26 @@ shinyUI(fluidPage(
               is colored dependent on each country's rank for that factor
               Using this visualization, we can see how certain factors
               are important to the overall score and which factors have 
-              a stronger correlation to a happier country. Countries that are red
-              did not participate in the Gallup Poll."),
+              a stronger correlation to a happier country. Below the plot on the left is the top
+              ten countries for each factor and on the right is the bottom ten..
+              Countries that are red did not participate in the Gallup Poll."),
             sidebarLayout(
                 sidebarPanel(
                     radioButtons("mapType",
                                  "Rank Countries By: ",
-                                 c("Happiness Score" = "Ladder.score.rank",
-                                   "GDP per Capita" = "Logged.GDP.per.capita.rank",
-                                   "Life Expectancy" = "Healthy.life.expectancy.rank",
-                                   "Social Support" = "Social.support.rank",
-                                   "Freedom to make Choices" = "Freedom.to.make.life.choices.rank",
-                                   "Generosity" = "Generosity.rank",
-                                   "Perceptions of Corruption" = "Perceptions.of.corruption.rank"
+                                 c("Happiness Score" = "Ladder.score.Rank",
+                                   "GDP per Capita" = "Logged.GDP.per.capita.Rank",
+                                   "Life Expectancy" = "Healthy.life.expectancy.Rank",
+                                   "Social Support" = "Social.support.Rank",
+                                   "Freedom to make Choices" = "Freedom.to.make.life.choices.Rank",
+                                   "Generosity" = "Generosity.Rank",
+                                   "Perceptions of Corruption" = "Perceptions.of.corruption.Rank"
                                  )),
                     tableOutput("rankTable")
                 ),
                 mainPanel(
-                    plotOutput("rankPlot")
-                    
+                    plotOutput("rankPlot"),
+                    tableOutput("bottomTable")
                 )
             )
                  

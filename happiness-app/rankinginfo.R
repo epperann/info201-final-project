@@ -21,41 +21,52 @@ map_outline[map_outline=="Palestine"] <- "Palestinian Territories"
 map_outline[map_outline=="USA"] <- "United States"
 map_outline[map_outline=="UK"] <- "United Kingdom"
 
-## Adds a column that ranks countries based on each factor
+## Adds a column that ranks countries for each factor
 data <- data %>% 
   arrange(desc(Logged.GDP.per.capita))%>%
-  mutate(Logged.GDP.per.capita.rank = row_number())
+  mutate(Logged.GDP.per.capita.Rank = row_number())
 data <- data %>% 
   arrange(desc(Healthy.life.expectancy))%>%
-  mutate(Healthy.life.expectancy.rank = row_number())
+  mutate(Healthy.life.expectancy.Rank = row_number())
 data <- data %>% 
   arrange(desc(Social.support))%>%
-  mutate(Social.support.rank = row_number())
+  mutate(Social.support.Rank = row_number())
 data <- data %>% 
   arrange(desc(Ladder.score))%>%
-  mutate(Ladder.score.rank = row_number())
+  mutate(Ladder.score.Rank = row_number())
 data <- data %>% 
   arrange(desc(Freedom.to.make.life.choices))%>%
-  mutate(Freedom.to.make.life.choices.rank = row_number())
+  mutate(Freedom.to.make.life.choices.Rank = row_number())
 data <- data %>% 
   arrange(desc(Generosity))%>%
-  mutate(Generosity.rank = row_number())
+  mutate(Generosity.Rank = row_number())
 data <- data %>% 
   arrange(desc(Perceptions.of.corruption))%>%
-  mutate(Perceptions.of.corruption.rank = row_number())
+  mutate(Perceptions.of.corruption.Rank = row_number())
 
 ## Joins the map data with the happiness report data
 names(data) <- str_replace_all(names(data), c(" " = "."))
 data <- rename(data, region = Country.name)
 map_rank <- full_join(map_outline, data, by = "region")
 
-    ##Creates a table with the top ten of a given factor
+    ##Creates a table with the top ten countries for a given factor
   rankingTable <- function(factor){
     tableRank <- data %>%
       select(region, factor)%>%
       filter(get(factor) <= 10)%>%
       arrange(get(factor))
     tableRank<- rename(tableRank, Country = region)
+    return(tableRank)
+  }
+  
+  ##Creates a table with the bottom ten countries for a given factor
+  bottomTable <- function(factor){
+    botTable <- data %>%
+      select(region, factor)%>%
+      filter(get(factor) > 139)%>%
+      arrange(desc(get(factor)))
+    botTable<- rename(botTable, Country = region)
+    return(botTable)
   }
   
   
